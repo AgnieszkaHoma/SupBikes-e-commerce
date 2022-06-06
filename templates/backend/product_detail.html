@@ -1,0 +1,94 @@
+{% extends 'main.html' %}
+{% load static %}
+<html>
+    <head>
+    </head>
+<body>
+{% block content %}
+{% static 'images' as baseUrl %}
+
+
+<section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-header">
+              <center><strong>{{product.name}}</center></strong>
+            </div>
+            <div class="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
+              data-mdb-ripple-color="light">
+              <img src="{{baseUrl}}/{{product.image}}"
+                style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="img-fluid">
+                <div class="mask"></div>
+              </a>
+            </div>
+            <div class="card-body pb-0">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p class="small text-muted">Availability: a lot<p>
+                  <p><strong>{{product.name}}</strong></p>
+                  <p class="small text-muted">{{product.get_category_display}}</p>
+                  <p class="small text-muted">Brand: {{product.brand}}</p>
+                </div>
+                <div>
+                           
+                </div>
+              </div>
+            </div>
+            <hr class="my-0" />
+            <div class="card-body pb-0">
+              <div class="d-flex justify-content-between">
+                <p>{{product.description}}</p><br>              
+              </div>
+              <strong><p>Price: {{product.price}}$</p></strong>
+              <p class="small text-muted">VISA, PayPay, Cash</p>
+            </div>
+            <hr class="my-0" />
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center pb-2 mb-1">        
+                <a href="{% url 'all_products' %}"  class="btn btn-secondary">Back</a>
+                <button type="button" class="btn btn-primary">Buy now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    {% comment %} <div class="container py-4 my-4 mx-auto d-flex flex-column">
+        <div class="header">
+            <div class="row r1">
+                <div class="col-md-9 abc">
+                    <h1>{{ product.name }} </h1>
+                </div>
+            </div>
+        </div>
+        <div class="container-body mt-4">
+            <div class="row r3">
+                <div class="col-md-5 p-0 klo">
+                    <ul>
+                        <li>Brand: {{ product.brand }}</li>
+                        <li>Category: {{ product.get_category_display }}</li>
+                        <li>Job Type: {{ job.jobType}}</li>
+                        <li>Size: {{ product.size }}</li>
+                        <li>Price: {{ job.contractType }}</li>
+                        <li>Experience: {{ job.experience }}</li>
+                        <li>Programming language: {{job.proglanguage}}</li>
+                        <li>Place: {{ job.place }}</li>
+                        <li>Salary: {{ job.salary }}$</li>
+                        <li>Description: {{ job.description }}</li>
+                    </ul>
+                </div>
+                <div class="col-md-7"> <img src="{{baseUrl}}/{{product.image}}" alt="Job" width="90%" height="95%"> </div>
+            </div>
+        </div>
+        <div class="footer d-flex flex-column mt-5">
+            <br>
+            
+        </div>
+    </div> {% endcomment %}
+{% endblock %}
+</html>
+</body>

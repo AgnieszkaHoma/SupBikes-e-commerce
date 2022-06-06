@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+	</head>
+	<body>
+		{% block content %}
+		<div class="m-1">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+					<a href="{% url 'home' %}" class="navbar-brand">SupBike</a>
+					<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div id="navbarCollapse" class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li class="nav-item dropdown">
+								<a href="{% url 'categories' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
+								<div class="dropdown-menu">
+									<a href="#" class="dropdown-item">Bikes</a>
+									<a href="#" class="dropdown-item">Clothes</a>
+									<a href="#" class="dropdown-item">Accesories</a>
+									<a href="#" class="dropdown-item">Helmets</a>
+									<a href="#" class="dropdown-item">Components</a>
+									<a href="{% url 'categories' %}" class="dropdown-item">All categories</a>
+								</div>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'about' %}" class="nav-link">About</a>
+							</li>
+							<li class="nav-item">
+								<a href=" {% url 'all_products' %} " class="nav-link">All products</a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'contact' %}" class="nav-link">Customer support</a>
+							</li>
+						</ul>
+
+						
+
+						{% if user.is_authenticated %}					
+						<ul class="nav navbar-nav ms-auto">
+							<li class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+								>Hello, {{user.first_name}}</a>
+								<div class="dropdown-menu dropdown-menu-end">
+									<a href="{% url 'profile' user %}" class="dropdown-item">Profile</a>
+									<a href="#" class="dropdown-item">My orders</a>
+									<div class="dropdown-divider"></div>
+									<a href="{% url 'signout' %}" class="dropdown-item">Log out</a>
+								</div>
+							</li>
+						</ul>
+						{% else %}
+
+						<ul class="nav navbar-nav ms-auto">
+							<li class="nav-item">
+								<a href=" {% url 'loginPage' %} " class="nav-link">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+									<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+								</svg> Log in</a> 
+							</li>
+						</ul>
+
+						{% endif%}
+					</div>
+				</div>
+			</nav>
+		</div>
+		{% endblock %}
+	</body>
+</html>

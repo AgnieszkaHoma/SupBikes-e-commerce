@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'main.html'%} {% load static %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="stylesheet" href="{% static 'styles/contact.css'%}" />
+		<title>Contact</title>
+		<meta name="description" content="" />
+	</head>
+	<body>
+		{% block content %}
+		<div class="card bg-transparent text-center">
+			<div class="container-fluid">
+				<form action="" method="post" style="width: 50vw; margin-left: 25vw">
+					{% csrf_token %}
+					<h5>Email:</h5>
+					{{ form.email }}
+					<h5>Title:</h5>
+					{{ form.title }}
+					<h5>Message:</h5>
+					{{ form.message }} <br />
+					<input type="submit" value="Send" />
+				</form>
+			</div>
+		</div>
+		{% endblock %}
+	</body>
+</html>

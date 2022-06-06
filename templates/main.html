@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+		{% comment %} <link rel="stylesheet" href="{% static 'styles/main.css'%}" />  {% endcomment %}
+		<title>SupBike - buy your dream bike</title>
+	</head>
+
+	<body>
+		{% include 'navbar.html' %}
+		{% comment %} {% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}  {% endcomment %}
+		{% block content %} 
+		<header>
+            <!-- Intro settings -->
+            <style>
+              /* Default height for small devices */
+              #intro-example {
+                height: 400px;
+              }
+          
+              /* Height for devices larger than 992px */
+              @media (min-width: 992px) {
+                #intro-example {
+                  height: 600px;
+                }
+              }
+			  .background-image {
+                min-height: calc(100vh - 56px);
+                background-image: url("{%  static 'n.jpg' %}");
+
+			  background-attachment: fixed;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			  z-index: 100; }
+            </style>
+          
+          
+            <!-- Background image -->
+            <div
+              id="intro-example"
+              class="p-5 text-center bg-image"
+              style="background-image: url('https://asset.scott-sports.com/nin/nino-wc-special-ed-spark-1600x750-division-hero-2022-bike-SCOTT-Sports_1905315_jpg_original_1.jpg?signature=525d2f0fffda3983c6e475cf343162e590887c32be53bcb7720aa0e88f40d703'); height: 715px; background-position: center top; width: 100vw; background-attachment: fixed;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			  z-index: 100;"
+            >
+              <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+                <div class="d-flex justify-content-center align-items-center h-100 ">
+                  <div class="text-white">
+                    <h1 class="mb-3">SupBike</h1>
+                    <h5 class="mb-4">Professional bike shop</h5>
+                    <a
+                      class="btn btn-outline-light btn-lg m-2"
+                      href="#"
+                      role="button"
+                      rel="nofollow"
+                    >Bikes</a
+                    >
+                    <a
+                      class="btn btn-outline-light btn-lg m-2"
+                      href="#"
+                      role="button"
+                      rel="nofollow"
+                    >Clothes</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Background image -->
+			
+          </header>	
+
+		  <main class="container my-4">
+			  <!-- Featured Products -->
+			  <h3 class="my-4 border-bottom pb-1">Products</h3>
+			  <div class="row">
+				<section class="text-center mb-4">
+
+					<div class="row wow fadeIn">
+			
+					  {% for product in products %}
+					  <div class="col-lg-3 col-md-6 mb-4">
+			
+						<div class="card">
+			
+						  <div class="view overlay">
+							{% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" {% endcomment %}
+							<img src="{{ product.image.url }}" class="card-img-top">
+							<a href="{{ product.get_absolute_url }}">
+							  <div class="mask rgba-white-slight"></div>
+							</a>
+						  </div>
+			
+						  <div class="card-body text-center">
+							<a href="" class="grey-text">
+							  <h5>{{ product.get_category_display }}</h5>
+							</a>
+							<h5>
+							  <strong>
+								<a href="{{ product.get_absolute_url }}" class="dark-grey-text">{{ product.title }}
+								  <span class="badge badge-pill {{ product.get_label_display }}-color">NEW</span>
+								</a>
+							  </strong>
+							</h5>
+			
+							<h4 class="font-weight-bold blue-text">
+							  <strong>$
+							  {% if product.discount_price %}
+							  {{ product.discount_price }}
+							  {% else %}
+							  {{ product.price }}
+							  {% endif %}
+							  </strong>
+							</h4>
+			
+						  </div>
+			
+						</div>
+			
+					  </div>
+					  {% endfor %}
+					</div>
+			
+				  </section>
+			  {% comment %} {% for product in data %}
+				  <div class="col-md-3 mb-4">
+					  <div class="card shadow">
+						<a href="/product/{{product.slug}}/{{product.id}}"><img src="/images/{{product.productattribute_set.first.image}}" class="card-img-top" alt="{{product.title}}"></a>
+						<div class="card-body">
+						  <h5 class="card-text"><a href="#">{{product.name}}</a></h5>
+					<h6>$ <span class="product-price-{{product.id}}">{{product.productattribute_set.first.price}}</span></h6>
+						</div>
+						<div class="card-footer">
+					{{product.productattribute_set.first.color.title}}
+					<input type="hidden" value="1" class="form-control product-qty-{{product.id}}" id="productQty" />
+					<input type="hidden" class="product-image-{{product.id}}" value="{{product.productattribute_set.first.image}}" />
+					<input type="hidden" class="product-id-{{product.id}}" value="{{product.id}}" />
+					<input type="hidden" class="product-title-{{product.id}}" value="{{product.title}}" />
+							<button class="btn btn-sm btn-primary add-to-cart" data-index="#"><i class="fa fa-shopping-cart"></i></button>
+					{% if user.is_authenticated %}
+							<button class="btn btn-sm btn-danger add-wishlist" data-product="#"><i class="fa fa-heart"></i></button>
+					{% else %}
+					<button class="btn btn-sm btn-danger disabled"><i class="fa fa-heart"></i></button>
+					{% endif %}
+							<span class="float-right">
+								4.5/5
+								<i class="fa fa-star text-warning"></i>
+							</span>
+						</div>
+					  </div>
+				  </div>
+			  {% endfor %} {% endcomment %}
+			  </div>
+			  <p class="my-4 text-center"><a href="{%url 'all_products'%}" class="btn btn-primary">See all</a></p>
+		  </main>
+		  	  
+
+		  <!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+	<!-- Section: Social media -->
+	<section
+	  class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+	>
+
+  
+	  <!-- Right -->
+	  <div>
+		
+	  </div>
+	  <!-- Right -->
+	</section>
+	<!-- Section: Social media -->
+  
+	<!-- Section: Links  -->
+	<section class="">
+	  <div class="container text-center text-md-start mt-5">
+		<!-- Grid row -->
+		<div class="row mt-3">
+		  <!-- Grid column -->
+		  <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+			<!-- Content -->
+			<h6 class="text-uppercase fw-bold mb-4">
+			  <i class="fas fa-gem me-3"></i>SupBike
+			</h6>
+			<p>
+				Company founded in 2020. We constantly strive to develop. We have the best products, and our passion for this industry is evidenced by 
+				a huge number of satisfied customers.
+			</p>
+		  </div>
+		  <!-- Grid column -->
+  
+		  <!-- Grid column -->
+		  <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">
+			  Categories
+			</h6>
+			<p>
+			  <a href="#!" class="text-reset">Bikes</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">Clothes</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">Accessories</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">Components</a>
+			</p>
+		  </div>
+		  <!-- Grid column -->
+  
+		  <!-- Grid column -->
+		  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">
+			  Informations
+			</h6>
+			<p>
+			  <a href="#!" class="text-reset">My profile</a>
+			</p>
+			<p>
+			  <a href="{%url 'delivery'%}" class="text-reset">Delivery</a>
+			</p>
+			<p>
+			  <a href="{%url 'payment_methods'%}" class="text-reset">Payment methods</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">Complaints</a>
+			</p>
+		  </div>
+		  <!-- Grid column -->
+  
+		  <!-- Grid column -->
+		  <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">
+			  Contact
+			</h6>
+			<p><i class="fas fa-home me-3"></i> 41 E Court St, Cincinnati, OH 45202</p>
+			<p>
+			  <i class="fas fa-envelope me-3"></i>
+			  supbike.shop@gmail.com
+			</p>
+			<p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+			<p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+		  </div>
+		  <!-- Grid column -->
+		</div>
+		<!-- Grid row -->
+	  </div>
+	</section>
+	<!-- Section: Links  -->
+  
+	<!-- Copyright -->
+	<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+	  © 2022 Copyright:
+	  <a class="text-reset" >Created by Agnieszka Homa</a>
+	  <a href="https://github.com/AgnieszkaHoma/SupBikes_ecommerce" class="me-4 text-reset">
+		<i class="fab fa-github"></i>
+	  </a>
+	</div>
+	<!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+		{% endblock %}
+	</body>
+</html>

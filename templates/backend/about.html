@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends 'main.html'%}
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="stylesheet" href="{% static 'styles/contact.css'%}" />
+		<title>Contact</title>
+		<meta name="description" content="" />
+	</head>
+	<body>
+		{% block content %}
+
+        {% comment %} <header>
+            <!-- Intro settings -->
+            <style>
+              /* Default height for small devices */
+              #intro-example {
+                height: 400px;
+              }
+          
+              /* Height for devices larger than 992px */
+              @media (min-width: 992px) {
+                #intro-example {
+                  height: 600px;
+                }
+              }
+            </style>
+          
+          
+            <!-- Background image -->
+            <div
+              id="intro-example"
+              class="p-5 text-center bg-image"
+              style="background-image: url('https://asset.scott-sports.com/nin/nino-wc-special-ed-spark-1600x750-division-hero-2022-bike-SCOTT-Sports_1905315_jpg_original_1.jpg?signature=525d2f0fffda3983c6e475cf343162e590887c32be53bcb7720aa0e88f40d703'); height: 715px; background-position: center top; width: 100vw"
+            >
+              <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+                <div class="d-flex justify-content-center align-items-center h-100 ">
+                  <div class="text-white">
+                    <h1 class="mb-3">SupBike</h1>
+                    <h5 class="mb-4">Professional bike shop</h5>
+                    <a
+                      class="btn btn-outline-light btn-lg m-2"
+                      href="{% url 'all_products' %}"
+                      role="button"
+                      rel="nofollow"
+                    >All products</a
+                    >
+                    <a
+                      class="btn btn-outline-light btn-lg m-2"
+                      href="#"
+                      role="button"
+                      rel="nofollow"
+                    >About Us</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Background image -->
+          </header> {% endcomment %}
+
+          <div class="container">
+            <div class="row mt-4">
+              <div class="col-md-10 offset-md-1">
+                <h4><strong>Visit Us!</strong></h4>
+                      <h5>41 E Court St, Cincinnati, OH 45202, US</h5>
+                      <br>
+                {{m|safe}}
+              </div>
+            </div>
+          </div>
+
+		{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <title> Categories</title>     
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  
+    <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+      
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+    </script> 
+      
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+    </script> 
+      
+    <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+    </script> 
+      
+    <style>
+        img {
+            max-width: 100%;
+            max-height: 60%;
+            padding-top:10px;
+        }
+        h1 {
+            color: green;
+        }
+    </style>
+</head> 
+  
+<body> 
+    {% include 'navbar.html' %}
+    <main class="container my-4">
+        <h3 class="my-4 border-bottom pb-1">Categories</h3>
+  
+    <div class="container">
+        <div class="card-group">
+            <div class="row">
+                <div class="card col-md-4">
+                    <img class="card-img-top" src={% static 'images/cat1.jpg' %}>
+  
+                    <div class="card-body">
+                        <h3 class="card-title">Bike</h3>
+                        <p class="card-text">Check out our bikes and choose the bike that's right for you</p>
+                        <a href="#" class="btn btn-primary">See all</a>
+                    </div>
+                </div>
+  
+                <div class="card col-md-4">
+                    <img class="card-img-top" src={% static 'images/cat2.jpg' %}>
+                      
+                    <div class="card-body">
+                        <h3 class="card-title">Clothes</h3>
+                        <p class="card-text">Find the right clothes for you, in which you will feel comfortable</p>
+                        <a href="#" class="btn btn-primary">See all</a>
+                    </div>
+                </div>
+                  
+                <div class="card col-md-4">
+                    <img class="card-img-top" src={% static 'images/cat3.jpg' %}>
+                      
+                    <div class="card-body">
+                        <h3 class="card-title">Accessories</h3>
+                        <p class="card-text">Very good bicycle accessories, find something for yourself</p>
+                        <a href="#" class="btn btn-primary">See all</a>
+                    </div>
+                </div>
+
+                <div class="card col-md-4">
+                    <img class="card-img-top" src={% static 'images/cat4.jpg' %}>
+                      
+                    <div class="card-body">
+                        <h3 class="card-title">Helmets</h3>
+                        <p class="card-text">Take care of your safety by choosing a good helmet, be safe</p>
+                        <a href="#" class="btn btn-primary">See all</a>
+                    </div>
+                </div>
+
+                <div class="card col-md-4">
+                    <img class="card-img-top" src={% static 'images/cat5.jpg' %}>
+                      
+                    <div class="card-body">
+                        <h3 class="card-title">Components</h3>
+                        <p class="card-text">Don't get surprised on the road, find the right bike components</p>
+                        <a href="#" class="btn btn-primary">See all</a>
+                    </div>
+                </div>
+
+                <div class="card col-md-4">
+                    <img class="card-img-top" src={% static 'images/cat6.jpg' %}>
+                      
+                    <div class="card-body">
+                        <h3 class="card-title">All products</h3>
+                        <p class="card-text">Check all the products in our store, find something for yourself</p>
+                        <a href="#" class="btn btn-primary">See all</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</main>
+</html> 
