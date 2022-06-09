@@ -38,12 +38,10 @@ class Product(models.Model):
     brand = models.CharField(max_length=200, null=True, blank=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length = 2, null=True, blank=True)
     size = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(upload_to='images/', null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=200, null=True)
     description =  models.TextField(null=True, blank=True)
-    rating = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    allRatings = models.IntegerField(null=True, blank=True, default=0)
     
     def __str__(self):
       return self.name

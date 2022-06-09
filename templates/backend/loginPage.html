@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% extends 'main.html'%} 
 {% load static %}
 <html lang="en">
 	<head>
@@ -10,31 +9,31 @@
 		<meta name="description" content="" />
 	</head>
 	<body>
-		{% block content %} {% for message in messages %}
-		<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-			<strong>Message: </strong>{{message}}
+		{% include 'navbar.html' %}
+		<div class="container">
+			<center>
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+			<strong>Message:</strong> {{ message }}
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
+		<span aria-hidden="true">&times;</span>
+	  </button>
 		</div>
 		{% endfor %}
-		
-		<div>
-			<center>
-				<br>
-				<br>
-				<h3>Login Page</h3>
-			<form method="POST" action="">
-				{% csrf_token %}
-		
-				<label>Username:</label>
-				<input type="text" name="username" placeholder="Enter Username"/>
-		
-				<label>Password:</label>
-				<input type="password" name="password" placeholder="Enter Password"/>
-		
-				<input type="submit" value="Login"/>
-			</form>		
+	
+		<h3>Log In to your account!</h3>
+		<form method="post" action="/loginPage" class="mb-2">
+			{% csrf_token %}
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username" Required>
+			</div>
+			<div class="form-group">
+				<label for="pass1">Password</label>
+				<input type="password" class="form-control" id="password1" name="password1" placeholder="Enter Your Password" Required>
+			</div>
+	<br>
+			<button type="submit" class="btn btn-primary">Log In</button>
 <br>
 			Don't have account?
 			<a href="{%url 'register'%}">
@@ -44,6 +43,6 @@
 		
 		<img src="https://cdn.pixabay.com/photo/2013/07/13/13/43/racing-bicycle-161449_960_720.png" style="height:400px;"></center>
 	</div>
-		{% endblock %}
+</center>
 	</body>
 </html>
