@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, ShippingAddress, ShopCart, Order, DiscountCode, Review, Contact
+from .models import Product, ShippingAddress, ShopCart, DiscountCode, Review, Contact
 
 # Register your models here.
 
@@ -9,7 +9,6 @@ admin.site.register(Product, ProductAdmin)
 
 admin.site.register(ShippingAddress)
 admin.site.register(ShopCart)
-admin.site.register(Order)
 admin.site.register(DiscountCode)
 admin.site.register(Review)
 class ContactAdmin(admin.ModelAdmin):

@@ -81,20 +81,20 @@ class ShopCart(models.Model):
     def __str__(self):
         return self.name
     
-class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    address = models.ForeignKey(ShippingAddress, on_delete=models.SET_NULL, null=True, blank=True)
-    delivery = models.CharField(choices = DELIVERY_CHOICES, max_length = 2, default = 'Choose a supplier')
-    payment = models.CharField(choices = PAYMENT_CHOICES, max_length = 2, default = 'Choose a payment method')
-    orderedProducts = models.CharField(ShopCart, max_length = 200, null=True)
-    createdAt = models.DateTimeField(auto_now_add=True)
-    deliveryPrice = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    priceForAll =  models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    status = models.CharField(choices= STATUS_CHOICES, max_length=50, default = 'Status')
-    # coupon = models.ForeignKey(DiscountCode, on_delete=models.SET_NULL, blank=True, null=True) 
+# class Order(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+#     address = models.ForeignKey(ShippingAddress, on_delete=models.SET_NULL, null=True, blank=True)
+#     delivery = models.CharField(choices = DELIVERY_CHOICES, max_length = 2, default = 'Choose a supplier')
+#     payment = models.CharField(choices = PAYMENT_CHOICES, max_length = 2, default = 'Choose a payment method')
+#     orderedProducts = models.CharField(ShopCart, max_length = 200, null=True)
+#     createdAt = models.DateTimeField(auto_now_add=True)
+#     deliveryPrice = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+#     priceForAll =  models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+#     status = models.CharField(choices= STATUS_CHOICES, max_length=50, default = 'Status')
+#     # coupon = models.ForeignKey(DiscountCode, on_delete=models.SET_NULL, blank=True, null=True) 
     
-    def __str__(self):
-        return str(self.createdAt)
+#     def __str__(self):
+#         return str(self.createdAt)
     
 class Review(models.Model):
     _id = models.AutoField(primary_key=True, editable=False)
@@ -115,3 +115,5 @@ class Contact(models.Model):
     
     def __str__(self):
         return self.email
+
+
