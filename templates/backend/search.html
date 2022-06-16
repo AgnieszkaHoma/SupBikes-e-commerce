@@ -1,0 +1,95 @@
+{% extends 'main.html'%}
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/search.css' %}">  
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+    </head>
+<body>
+{% include 'navbar.html' %}
+{% block content %}
+{% static 'images' as baseUrl %}
+<center><h1>Products:</h1><hr>
+        {% for product in products %}
+        <section>
+          <div class="container py-2">
+            <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-10">
+              <div class="card shadow-0 border rounded-3">
+              <div class="card-body">
+                <div class="row">
+                <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                  <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                  <img src="{{baseUrl}}/{{product.image}}"
+                    class="w-100" />
+                  <a href="#!">
+                    <div class="hover-overlay">
+                    <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                    </div>
+                  </a>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-6">
+                  <h5>{{product.name}}</h5>
+                  <div class="d-flex flex-row">
+                  <small><span>Availability: a lot</span></small>
+                  </div>
+                  <div class="mt-1 mb-0 text-muted small">
+                  <span>{{product.get_category_display}}</span>
+                  <span class="text-primary"> • </span>
+                  <span>{{product.brand}}</span>
+                  <span class="text-primary"> • </span>
+                  {% if product.size == None %}
+                  <span>No size<br /></span>
+                  {% else %}
+                  <span>{{product.size}}<br /></span>
+                  {% endif %}
+                  </div>
+                  <p class="text-truncate mb-4 mb-md-0">
+                  <br>
+                  {{product.description}}
+                  </p>
+                </div>
+                <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                  <div class="d-flex flex-row align-items-center mb-1">
+                  <h4 class="mb-1 me-1">${{product.price}}</h4>
+                  </div>
+                  <h6 class="text-success">Free shipping</h6>
+                  <div class="d-flex flex-column mt-4">
+                  <a href="{% url 'product_detail' product.id %}" class="btn btn-primary btn-sm mt-2">Check offer</a>
+                  <button class="btn btn-outline-primary btn-sm mt-2 add-wishlist" type="button">
+                    Add to wishlist
+                  </button>
+                  {% if user.is_authenticated  and user.is_superuser %} 
+                  <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-sm mt-2">Delete</a>
+                  <a href="{% url 'update_product' product.id %}" class="btn btn-warning btn-sm mt-2">Update</a>
+                  {% endif %}
+                  </div>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+            </div>
+            {% endfor %}
+          </section>
+        
+            {% comment %} <div class="col-md-8 mt-4 mb-4" >
+            <h3>{{product.name}}</h3>
+            <p>Category: {{product.category}}</p>
+            <p>{{product.description}}</p>
+            <a  class="button" role="button" href="{% url 'product_detail' product.id %}">See more</a>
+            </div>        
+            <hr>
+        {% endfor %}
+      </h4>
+        </div> {% endcomment %}
+      </center>
+       
+        {% endblock %}
+        
+
+        
+</body>
+</html>

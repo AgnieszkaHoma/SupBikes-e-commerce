@@ -1,0 +1,205 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/prod.css'%}" />
+{% include 'navbar.html'%}
+<br>
+{% comment %} <center><h2>Wishlist</h2></center><br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+          Product
+        </div>
+        <div class="col">
+          Product
+        </div>
+        <div class="col">
+          Add to cart
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'images/trek1.jpg' %}" width="100" height="100">
+        </div>
+        <div class="col">
+            <br>
+            Trek Marlin 2022
+          {% comment %} {{product.name}} {% endcomment %}
+        {% comment %} </div>
+        <div class="col">
+          <br>
+          <button type="button" class="btn btn-primary">Buy now</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'images/force.jpg' %}" width="90" height="100">
+        </div>
+        <div class="col">
+            <br>
+            Force Drive
+        </div>
+        <div class="col">
+          <br>
+          <button type="button" class="btn btn-primary">Buy now</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'images/giant.jpg' %}" width="120" height="100">
+        </div>
+        <div class="col">
+            <br>
+            Giant Fathom 2
+        </div>
+        <div class="col">
+          <br>
+          <button type="button" class="btn btn-primary">Buy now</button>
+        </div>
+      </div>
+    
+      
+    </div> 
+    </div> 
+  </div> {% endcomment %}
+  <center><h4>Wishlist</h4><center><br>
+  <section>
+    <div class="container py-3">
+        <div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1 pt-md-0 pt-4">
+    <div class="card">
+      <img class="card-img-top" src="{% static 'images/lampka.jpg'%}" />
+      <div class="card-body">
+        <h6 class="font-weight-bold pt-1">Bicycle light</h6>
+        <div class="text-muted description">Accesories</div>
+        <div class="text-muted description">Brand: Merida</div>
+        <div class="text-muted description">Size: None</div>
+        <div class="d-flex align-items-center justify-content-between pt-3">
+          <div class="d-flex flex-column">
+            <div class="h6 font-weight-bold">29$</div>
+          </div>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Buy now</a>
+          <a href="#" class="btn btn-primary btn-sm mt-2">See</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1 pt-md-0 pt-4">
+    <div class="card">
+      <img class="card-img-top" src="{% static 'images/bidon.jpg'%}" />
+      <div class="card-body">
+        <h6 class="font-weight-bold pt-1">Water bottle</h6>
+        <div class="text-muted description">Accesories</div>
+        <div class="text-muted description">Brand: Merida</div>
+        <div class="text-muted description">Size: None</div>
+        <div class="d-flex align-items-center justify-content-between pt-3">
+          <div class="d-flex flex-column">
+            <div class="h6 font-weight-bold">8$</div>
+          </div>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Buy now</a>
+          <a href="#" class="btn btn-primary btn-sm mt-2">See</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1 pt-md-0 pt-4">
+    <div class="card">
+      <img class="card-img-top" src="{% static 'images/pompka.jpg'%}" />
+      <div class="card-body">
+        <h6 class="font-weight-bold pt-1">Bicycle floor pump</h6>
+        <div class="text-muted description">Accesories</div>
+        <div class="text-muted description">Brand: Merida</div>
+        <div class="text-muted description">Size: None</div>
+        <div class="d-flex align-items-center justify-content-between pt-3">
+          <div class="d-flex flex-column">
+            <div class="h6 font-weight-bold">30$</div>
+          </div>
+          <a href="#" class="btn btn-primary btn-sm mt-2">Buy now</a>
+          <a href="#" class="btn btn-primary btn-sm mt-2">See</a>
+        </div>
+      </div>
+    </div>
+  </div>
+            
+  <br />
+</div>
+</div>
+</section>
+{% comment %} 
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="bg-image hover-zoom ripple shadow-1-strong rounded ripple-surface">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/new/img(4).webp"
+            class="w-100" />
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+              <div class="d-flex justify-content-start align-items-start h-100">
+                <h5><span class="badge bg-light pt-2 ms-3 mt-3 text-dark">$83</span></h5>
+              </div>
+            </div>
+            <div class="hover-overlay">
+              <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/new/img(5).webp"
+            class="w-100" />
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+              <div class="d-flex justify-content-start align-items-start h-100">
+                <h5><span class="badge bg-light pt-2 ms-3 mt-3 text-dark">$106</span></h5>
+              </div>
+            </div>
+            <div class="hover-overlay">
+              <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="bg-image hover-zoom ripple shadow-1-strong rounded">
+          <img
+                    alt="example"
+                    class="img-fluid rounded"
+                    src="https://cdn.pixabay.com/photo/2016/03/26/22/47/motion-blur-1281675_960_720.jpg"/>
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+              <div class="d-flex justify-content-start align-items-start h-100">
+                <h5><span class="badge bg-light pt-2 ms-3 mt-3 text-dark">$58</span></h5>
+              </div>
+            </div>        
+          </a>
+        </div>
+      </div>
+    </div>
+  </div> {% endcomment %}
+</section>
+<link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+<link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+<link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"> 
+<link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> 
+<link rel="stylesheet" href= "https://use.fontawesome.com/releases/v5.7.2/css/all.css"> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/js/dist/main.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css"
+  rel="stylesheet"
+/>

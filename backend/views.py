@@ -1,6 +1,6 @@
 from multiprocessing import context
 from supbike import settings
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -19,6 +19,8 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import PasswordChangeForm
 
 # Create your views here.
 def home(request):
@@ -172,12 +174,9 @@ def categories(request):
 def delivery(request):
     return render(request, 'backend/delivery.html')
 
-def payment_methods(request):   
-    return render(request, 'backend/payment_methods.html')
-
 class ProductList(ListView):
     model = Product
-    template_name = 'backend/all_products.html'
+    template_name = 'backend/prod.html'
 
 def product_detail(request, product_id):
     product = Product.objects.get(pk = product_id)
@@ -200,4 +199,56 @@ class AddProductView(LoginRequiredMixin, CreateView):
 class DeleteProductView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'backend/delete_product.html'
+    success_url = reverse_lazy('home')
+    
+def cart(request):  
+    return render(request, 'backend/cart.html')
+    
+def checkout(request):
+    return render(request, 'backend/checkout.html')
+
+def wishlist(request):
+    return render(request, 'backend/wishlist.html')
+
+class UpdateProductView(UpdateView):
+    model = Product
+    form_class = EditProductForm
+    template_name = 'backend/update_product.html'
+ 
+    
+class Search(ListView):
+    model = Product
+    template_name = 'backend/search.html'
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return Product.objects.filter(name__icontains=query)
+    
+def summary(request):  
+    return render(request, 'backend/summary.html')
+
+def bikes(request):  
+    return render(request, 'backend/bikes.html')
+
+def clothes(request):  
+    return render(request, 'backend/clothes.html')
+
+def accesories(request):  
+    return render(request, 'backend/accesories.html')
+
+def helmets(request):  
+    return render(request, 'backend/helmets.html')
+
+def components(request):  
+    return render(request, 'backend/components.html')
+
+def orders(request):  
+    return render(request, 'backend/orders.html')
+
+def users(request):  
+    return render(request, 'backend/users.html')
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = PasswordChangeForm
     success_url = reverse_lazy('home')

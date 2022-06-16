@@ -4,7 +4,14 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+			crossorigin="anonymous"
+		/>
+
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	</head>
 	<body>
@@ -21,11 +28,11 @@
 							<li class="nav-item dropdown">
 								<a href="{% url 'categories' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
 								<div class="dropdown-menu">
-									<a href="#" class="dropdown-item">Bikes</a>
-									<a href="#" class="dropdown-item">Clothes</a>
-									<a href="#" class="dropdown-item">Accesories</a>
-									<a href="#" class="dropdown-item">Helmets</a>
-									<a href="#" class="dropdown-item">Components</a>
+									<a href="{% url 'bikes' %}" class="dropdown-item">Bikes</a>
+									<a href="{% url 'clothes' %}" class="dropdown-item">Clothes</a>
+									<a href="{% url 'accesories' %}" class="dropdown-item">Accesories</a>
+									<a href="{% url 'helmets' %}" class="dropdown-item">Helmets</a>
+									<a href="{% url 'components' %}" class="dropdown-item">Components</a>
 									<a href="{% url 'categories' %}" class="dropdown-item">All categories</a>
 								</div>
 							</li>
@@ -40,16 +47,43 @@
 							</li>
 						</ul>
 
-						
-
-						{% if user.is_authenticated %}					
+						{% if user.is_authenticated %}
 						<ul class="nav navbar-nav ms-auto">
+							<li class="nav-item">
+								<a href="{% url 'wishlist' %}" class="nav-link"
+									><svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="16"
+										height="16"
+										fill="currentColor"
+										class="bi bi-heart-fill"
+										viewBox="0 0 16 16"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+										/></svg
+								></a>
+							</li>
+							<li class="nav-item">
+								<a href="{% url 'cart' %}" class="nav-link"
+									><svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="16"
+										height="16"
+										fill="currentColor"
+										class="bi bi-cart2"
+										viewBox="0 0 16 16"
+									>
+										<path
+											d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+										/></svg
+								></a>
+							</li>
 							<li class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-								>Hello, {{user.first_name}}</a>
+								<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Hello, {{user.first_name}}</a>
 								<div class="dropdown-menu dropdown-menu-end">
 									<a href="{% url 'profile' user %}" class="dropdown-item">Profile</a>
-									<a href="#" class="dropdown-item">My orders</a>
 									<div class="dropdown-divider"></div>
 									<a href="{% url 'signout' %}" class="dropdown-item">Log out</a>
 								</div>
@@ -60,9 +94,20 @@
 						<ul class="nav navbar-nav ms-auto">
 							<li class="nav-item">
 								<a href=" {% url 'loginPage' %} " class="nav-link">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
-									<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
-								</svg> Log in</a> 
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="16"
+										height="16"
+										fill="currentColor"
+										class="bi bi-lock"
+										viewBox="0 0 16 16"
+									>
+										<path
+											d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"
+										/>
+									</svg>
+									Log in</a
+								>
 							</li>
 						</ul>
 
@@ -72,5 +117,6 @@
 			</nav>
 		</div>
 		{% endblock %}
+		<!-- CSS only -->
 	</body>
 </html>

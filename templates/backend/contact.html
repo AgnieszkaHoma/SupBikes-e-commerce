@@ -10,7 +10,7 @@
 		<meta name="description" content="" />
 	</head>
 	<body>
-		{% block content %}
+		{% comment %} {% block content %}
 		<div class="card bg-transparent text-center">
 			<div class="container-fluid">
 				<form action="" method="post" style="width: 50vw; margin-left: 25vw">
@@ -25,6 +25,31 @@
 				</form>
 			</div>
 		</div>
+		{% endblock %} {% endcomment %}
+
+		{% block content %}
+
+		{% if user.is_authenticated %}
+		<br>
+
+	<center> 
+		<h2>Contact</h2><br>
+					<form action="" method="post">
+						{% csrf_token %}
+						{{ form.as_p}}
+						<button class="btn btn-primary" type="submit">Send</button>
+					</form>
+				</center>
+		{% else %}
+		<br><br><br>
+			<center><h3>Sorry, you have to be logged in to contact with us. <br> Please, logged in or register.</h3><br>
+			<a href="{% url 'loginPage' %}">
+			<button class="btn btn-primary" type="submit">Login</button></a>
+			<a href="{% url 'register' %}">
+			<button class="btn btn-primary" type="submit">Register</button></a>
+		</center>
+		{% endif %}
+<center><img src="https://cdn.pixabay.com/photo/2017/06/08/20/18/computer-icon-2384752_1280.png" height=300px></center>
 		{% endblock %}
 	</body>
 </html>

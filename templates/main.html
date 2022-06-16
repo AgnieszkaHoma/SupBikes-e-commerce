@@ -62,78 +62,46 @@
                     <h5 class="mb-4">Professional bike shop</h5>
                     <a
                       class="btn btn-outline-light btn-lg m-2"
-                      href="#"
+                      href="{% url 'bikes' %}"
                       role="button"
                       rel="nofollow"
                     >Bikes</a
                     >
                     <a
                       class="btn btn-outline-light btn-lg m-2"
-                      href="#"
+                      href="{% url 'clothes' %}"
                       role="button"
                       rel="nofollow"
                     >Clothes</a
                     >
                   </div>
                 </div>
+				<br>
+				<div class="container text-white">
+					<form  action="{% url 'search' %}" method="get">						  
+					  <input type="text" name="q" placeholder="Search">
+					  <a href = "{% url 'search'%}">
+					  <button class="btn btn-primary" type="submit">Search</button>
+					  </a>
+					</form>
+			  
+
+				  <br>
+			  </div>
               </div>
             </div>
+
             <!-- Background image -->
 			
           </header>	
 
-		  <main class="container my-4">
+		  <main class="container my-4" >
 			  <!-- Featured Products -->
-			  <h3 class="my-4 border-bottom pb-1">Products</h3>
+			  <h3 class="my-4 border-bottom pb-1">New!</h3>
 			  <div class="row">
-				<section class="text-center mb-4">
+				
 
-					<div class="row wow fadeIn">
-			
-					  {% for product in products %}
-					  <div class="col-lg-3 col-md-6 mb-4">
-			
-						<div class="card">
-			
-						  <div class="view overlay">
-							{% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" {% endcomment %}
-							<img src="{{ product.image.url }}" class="card-img-top">
-							<a href="{{ product.get_absolute_url }}">
-							  <div class="mask rgba-white-slight"></div>
-							</a>
-						  </div>
-			
-						  <div class="card-body text-center">
-							<a href="" class="grey-text">
-							  <h5>{{ product.get_category_display }}</h5>
-							</a>
-							<h5>
-							  <strong>
-								<a href="{{ product.get_absolute_url }}" class="dark-grey-text">{{ product.title }}
-								  <span class="badge badge-pill {{ product.get_label_display }}-color">NEW</span>
-								</a>
-							  </strong>
-							</h5>
-			
-							<h4 class="font-weight-bold blue-text">
-							  <strong>$
-							  {% if product.discount_price %}
-							  {{ product.discount_price }}
-							  {% else %}
-							  {{ product.price }}
-							  {% endif %}
-							  </strong>
-							</h4>
-			
-						  </div>
-			
-						</div>
-			
-					  </div>
-					  {% endfor %}
-					</div>
-			
-				  </section>
+					
 			  {% comment %} {% for product in data %}
 				  <div class="col-md-3 mb-4">
 					  <div class="card shadow">
@@ -162,6 +130,41 @@
 					  </div>
 				  </div>
 			  {% endfor %} {% endcomment %}
+
+			  <div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col">
+				  <div class="card h-100">
+					<img src="{% static 'images/trek1.jpg' %}" class="card-img-top" alt="Skyscrapers"/>
+					<div class="card-body">
+					  <h5 class="card-title">Trek Marlin 2021</h5>
+					  <p class="card-text">
+						The Trek Marlin 5 is an everyday bike that can handle both city commutes and forest paths. It is a very universal design for people who love to spend time actively outdoors.
+					  </p>
+					</div>
+				  </div>
+				</div>
+				<div class="col">
+				  <div class="card h-100"><br><br><br><br><br>
+					<img src="{% static 'images/merida.jpg' %}" class="card-img-top" alt="Los Angeles Skyscrapers"/>
+					<div class="card-body"><br><br>
+					  <h5 class="card-title">Merida Big Nine 501</h5>
+					  <p class="card-text">Merida Big Nine is the most technologically advanced aluminum frame in the Boost standard, which draws inspiration from higher carbon models. In this model we find a drive based on the Shimano SLX 1x12 group.</p>
+					</div>
+				  </div>
+				</div>
+				<div class="col">
+				  <div class="card h-100"><br><br><br><br>
+					<img src="{% static 'images/giant.jpg' %}" class="card-img-top" alt="Palm Springs Road"/>
+					<div class="card-body">
+					  <h5 class="card-title">Giant Fathom 2</h5>
+					  <p class="card-text">
+						As usual, the Giant does not disappoint and for the price of approx. PLN 5,000 it presents a mountain bike that is definitely above its price range, with competitive performance and modern solutions that will make your ride even faster, more reliable and full of fun!
+					  </p>
+					</div>				
+				  </div>
+				</div>
+			  </div>
+
 			  </div>
 			  <p class="my-4 text-center"><a href="{%url 'all_products'%}" class="btn btn-primary">See all</a></p>
 		  </main>
@@ -208,16 +211,16 @@
 			  Categories
 			</h6>
 			<p>
-			  <a href="#!" class="text-reset">Bikes</a>
+			  <a href="{% url 'bikes' %}" class="text-reset">Bikes</a>
 			</p>
 			<p>
-			  <a href="#!" class="text-reset">Clothes</a>
+			  <a href="{% url 'clothes' %}" class="text-reset">Clothes</a>
 			</p>
 			<p>
-			  <a href="#!" class="text-reset">Accessories</a>
+			  <a href="{% url 'accesories' %}" class="text-reset">Accessories</a>
 			</p>
 			<p>
-			  <a href="#!" class="text-reset">Components</a>
+			  <a href="{% url 'components' %}" class="text-reset">Components</a>
 			</p>
 		  </div>
 		  <!-- Grid column -->
@@ -228,14 +231,20 @@
 			<h6 class="text-uppercase fw-bold mb-4">
 			  Informations
 			</h6>
+			{% if user.is_authenticated %}
 			<p>
-			  <a href="#!" class="text-reset">My profile</a>
+			  <a href="{% url 'profile' user %}" class="text-reset">My profile</a>
 			</p>
+			{% else %}
+			<p>
+				<a href="{% url 'home' %}" class="text-reset">My profile</a>
+			  </p>
+			{% endif %}
 			<p>
 			  <a href="{%url 'delivery'%}" class="text-reset">Delivery</a>
 			</p>
 			<p>
-			  <a href="{%url 'payment_methods'%}" class="text-reset">Payment methods</a>
+			  <a href="{%url 'all_products'%}" class="text-reset">Products</a>
 			</p>
 			<p>
 			  <a href="#!" class="text-reset">Complaints</a>

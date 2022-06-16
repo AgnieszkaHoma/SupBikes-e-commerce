@@ -3,6 +3,11 @@ from .models import *
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
 
+
+class ProductForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
 class ContactForm(ModelForm):
     class Meta:
         model = Contact
@@ -26,3 +31,8 @@ class NewProductForm(forms.ModelForm):
     class Meta:
         model = Product 
         fields = ['name', 'brand', 'category', 'size', 'image', 'price', 'description']    
+        
+class EditProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ('name', 'price','description')
